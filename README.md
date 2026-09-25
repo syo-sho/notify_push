@@ -256,6 +256,9 @@ StartLimitBurst = 5
 [Service]
 Type = oneshot
 ExecStart = /usr/bin/systemctl restart notify_push.service
+# First restart may fail right after an update
+Restart = on-failure
+RestartSec = 15
 
 [Install]
 WantedBy = multi-user.target
